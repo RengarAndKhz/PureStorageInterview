@@ -63,7 +63,34 @@ class BuddySystem:
                         self.tree[i][j] = 1
             start, end = start/2, end/2
         print(self.tree)
+'''class Solution:
+    def __init__(self):
+        self.tree = [[0], [0, 0], [1, 0, 0, 1], [1, 1, 1, 0, 0]]
+    def setBits(self, offset, length):
+        stack = [i for i in xrange(offset, offset+length)]
+        for i in xrange(len(self.tree)-1, -1, -1):
+            tempStack = set()
+            for j in xrange(len(stack)):
+                self.tree[i][stack[j]] = 1
+                if stack[j] % 2 == 0:
+                    if j+1 < len(stack) or stack[j] == len(self.tree[i])-1 or self.tree[i][stack[j]+1] == 1:
+                        tempStack.add(stack[j]/2)
+                else:
+                    if self.tree[i][stack[j]-1] == 1:
+                        tempStack.add(stack[j]/2)
+            stack = list(tempStack)
 
+
+
+
+    def clearBits(self, offset, length):
+        stack = [i for i in xrange(offset, offset+length) if self.tree[-1][i] == 1]
+        for i in xrange(len(self.tree)-1, -1, -1):
+            tempStack = set()
+            for j in xrange(len(stack)):
+                self.tree[i][stack[j]] = 0
+                tempStack.add(stack[j]/2)
+            stack = list(tempStack)'''
 
 
 
